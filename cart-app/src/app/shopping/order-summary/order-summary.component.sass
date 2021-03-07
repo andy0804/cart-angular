@@ -1,5 +1,6 @@
 
   
+  @import './../../../_mixins.sass'
   .order__subtotal__table
     width:100%
   
@@ -11,8 +12,8 @@
   section.order__sub-sections.order__address
     margin: 20px 2px  
   .disclaimer
-    color: red
-    font-weight: bold
+   @include warningStyle
+   
   @media (max-width: 768px)
   section.order__sub-sections.secure__checkout
     display: flex

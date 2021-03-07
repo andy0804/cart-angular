@@ -1,21 +1,21 @@
 
 
+  @import './../../../_mixins.sass'
 .item-container
-  display: flex
-  flex-direction: row
+  @include flexboxRow
 
 .item-detail-container
-  display: flex
-  flex-direction: column
+ @include flexboxColumn
+
 .item-detail-container > h5 , .item-detail-container > h6 
     color: blue
 .container 
-  display: flex
+  @include flexboxColumn
   width: 100%
   height: 100vh
-  flex-direction: column
   justify-content: center
   align-items: center
+
 .free__delivery
     color: red
 .quantity 
@@ -67,8 +67,7 @@
   color: #fff
 
 .delivery-container
-  display: flex
-  flex-direction: row
+  @include flexboxRow
 
 
 .delivery-label,.delivery-option,.delivery-store
@@ -80,16 +79,13 @@
   cursor: pointer
 
 .item-container,.item-detail-container,.promo-container
-  display: flex
-  flex-direction: column
+ @include flexboxColumn
 
 .wishlist-container
-   display: flex
-   flex-direction: row
+   @include flexboxRow
    font-size: 12px
 
 @media (max-width: 768px)
   .item-container,.item-detail-container,.promo-container,.wishlist-container
-    display: flex
-    flex-direction: column
+    @include flexboxColumn
     white-space: normal
