@@ -1,3 +1,10 @@
+<p class="cart-count">
+  Shopping Cart
+  <span *ngIf="cartDetails && cartDetails.length > 0"
+    >({{ cartDetails.length }})</span
+  >
+</p>
+
 <div class="flexbox-container">
   <div class="flexbox-item flexbox-item-1">
     <div class="table-responsive">

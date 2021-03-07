@@ -1,4 +1,5 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SharedService } from './services/shared.service';
 
 @Component({
@@ -6,16 +7,27 @@ import { SharedService } from './services/shared.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
 })
-export class AppComponent implements OnInit, AfterContentInit {
-  showLoader: boolean = false;
-  ngOnInit() {
-    this.showLoader = true;
+export class AppComponent implements OnInit, AfterContentInit, OnDestroy {
+  showLoader: boolean;
+  subscriptions: any;
+  constructor(private sharedService: SharedService) {
+    this.showLoader = false;
   }
+  ngOnInit() {}
 
   ngAfterContentInit() {
-    this.sharedService.notifySpinner$.subscribe((data: any) => {
-      this.showLoader = data.flag;
+    this.subscriptions = this.sharedService.notifySpinner$.subscribe(
+      (data: any) => {
+        this.updateSpinner(data.flag);
+      }
+    );
+  }
+  updateSpinner(flag: any) {
+    setTimeout(() => {
+      this.showLoader = flag;
     });
   }
-  constructor(private sharedService: SharedService) {}
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
 }

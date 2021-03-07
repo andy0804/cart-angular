@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-cart-summary',
@@ -33,16 +34,15 @@ export class CartSummaryComponent implements OnInit {
         this.dropDownOptionsAvailable.push(item);
       }
     }
-    console.log('akak', this.dropDownOptionsAvailable);
   }
   fetchData() {
     const url = `https://run.mocky.io/v3/ca987707-db46-419e-9178-2bbdde3c3762`;
 
     this.apiService.getRequest(url).then((response: any) => {
-      console.log(response);
       this.cartDetails = response.cartDetails.cartItems;
       this.cartDetailsOriginal = JSON.parse(JSON.stringify(this.cartDetails));
       this.cartSummary = response.cartDetails.cartSummary;
+      this.cartSummary.showCheckoutButton = response.showCheckoutButton;
       this.prepareDropDownValues(this.cartDetails);
     });
   }

@@ -9,7 +9,5 @@ export class ProductDetailComponent implements OnInit {
   @Input() cartDetails: any;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.cartDetails.brandName);
-  }
+  ngOnInit(): void {}
 }

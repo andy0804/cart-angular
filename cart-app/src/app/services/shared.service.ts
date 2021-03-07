@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class SharedService {
   public notifySpinner$: any = new Subject<any>();
+  public notifyRoute$: any = new Subject<any>();
 
   constructor() {}
 
