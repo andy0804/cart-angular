@@ -1,0 +1,24 @@
+<div class="item-container">
+  <div class="image-container">
+    <img width="35px" height="35px" alt="no image" />
+  </div>
+  <div class="item-detail-container">
+    <h5>{{ cartDetails.brandName }} {{ cartDetails.itemName }}</h5>
+    <h6>
+      Model: {{ cartDetails.modelNumber }} | Sku {{ cartDetails.modelCode }}
+    </h6>
+    <div class="promo-container">
+      <img width="35px" height="35px" alt="no image" />
+      <span *ngIf="cartDetails.bmFinanceDetail">{{
+        cartDetails.bmFinanceDetail.financePromoMsg
+      }}</span>
+      <p class="free__delivery" *ngIf="cartDetails.freeShipping">
+        FREE DELIVERY AT THIS PRICE
+      </p>
+    </div>
+    <div class="wishlist-container">
+      <img width="35px" height="35px" alt="no image" />
+      <span>Add to wishlist </span>
+    </div>
+  </div>
+</div>

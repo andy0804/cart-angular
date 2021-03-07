@@ -1,0 +1,56 @@
+<div class="flexbox-container">
+  <div class="flexbox-item flexbox-item-1">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th id="product">Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of cartDetails; let i = index">
+          <tr>
+            <td>
+              <app-product-detail [cartDetails]="item"></app-product-detail>
+            </td>
+            <td>
+              <div class="quantity">
+                <a
+                  (click)="decrement(item, $event, i)"
+                  href="#"
+                  class="quantity__minus"
+                  ><span>-</span></a
+                >
+                <input
+                  (keypress)="validate($event)"
+                  name="quantity"
+                  type="number"
+                  class="quantity__input"
+                  value="{{ item.itemQuantity }}"
+                />
+                <a
+                  (click)="increment(item, $event, i)"
+                  href="#"
+                  class="quantity__plus"
+                  ><span>+</span></a
+                >
+              </div>
+            </td>
+          </tr>
+          <tr class="shipping">
+            <td class="shipping" colspan="4">
+              <app-shipping></app-shipping>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="flexbox-item flexbox-item-2">
+    <div class="flexbox order-summary">
+      <app-order-summary></app-order-summary>
+    </div>
+  </div>
+</div>

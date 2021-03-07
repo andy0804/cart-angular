@@ -1,0 +1,27 @@
+.delivery-container
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  padding: 10px 10px
+  margin: 10px 10px
+  width:100%
+
+  .delivery-label,.delivery-option,.delivery-store
+    display: flex
+    width:25%
+
+.delivery-label
+    display: flex
+    justify-content: flex-end
+
+
+
+@media (max-width: 768px)
+ .delivery-container
+   display: flex
+   flex-direction: column
+   justify-content: space-between
+.delivery-label,.delivery-option,.delivery-store
+    display: flex
+    flex-direction: column
+    width:25%
