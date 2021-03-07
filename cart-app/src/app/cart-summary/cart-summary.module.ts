@@ -8,6 +8,7 @@ import { CartSummaryComponent } from './cart-summary.component';
 import { ProductDetailComponent } from '../shopping/product-detail/product-detail.component';
 import { ShippingComponent } from '../shopping/shipping/shipping.component';
 import { DropdownComponent } from '../common/widgets/dropdown/dropdown.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,6 @@ import { DropdownComponent } from '../common/widgets/dropdown/dropdown.component
     ShippingComponent,
     DropdownComponent,
   ],
-  imports: [CommonModule, CartSummaryRoutingModule],
+  imports: [CommonModule, CartSummaryRoutingModule, NgbModule],
 })
 export class CartSummaryModule {}

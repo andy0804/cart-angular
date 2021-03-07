@@ -6,24 +6,28 @@
         <tr>
           <td class="first-row">Subtotal</td>
           <td class="first-row" align="right">
-            <strong>$179,00</strong>
+            <strong>{{ cartSummary?.subtotal | currency }}</strong>
           </td>
         </tr>
         <tr>
           <td>Estimated Shipping</td>
-          <td align="right"><strong>$179,00</strong></td>
+          <td align="right">
+            <strong>{{ cartSummary?.shippingAmount | currency }}</strong>
+          </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
           <td colspan="1" class="values__total">Estimated Total</td>
-          <td align="right" class="values--total-price">$152,10</td>
+          <td align="right" class="values--total-price">
+            <strong>{{ cartSummary?.cartTotal | currency }}</strong>
+          </td>
         </tr>
       </tfoot>
     </table>
   </section>
   <section class="order__sub-sections order__address">
-    Sales tax will be calculated at checkout
+    <span class="disclaimer">*</span>{{ cartSummary?.taxDisclaimer }}
   </section>
   <section class="order__sub-sections secure__checkout">
     <app-button

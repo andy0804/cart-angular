@@ -2,8 +2,17 @@
   <div class="delivery-label">Choose Delivery label</div>
 
   <div class="dropdown__section">
-    <app-dropdown></app-dropdown>
+    <app-dropdown
+      [selectedValue]="selectedValue"
+      [options]="deliverOptions"
+    ></app-dropdown>
   </div>
 
-  <div class="delivery-store"><app-dropdown></app-dropdown></div>
+  <div class="delivery-store">
+    <app-dropdown
+      *ngIf="storeOptions.length > 0"
+      [selectedValue]="storeSelectedValue"
+      [options]="storeDropDownList"
+    ></app-dropdown>
+  </div>
 </div>

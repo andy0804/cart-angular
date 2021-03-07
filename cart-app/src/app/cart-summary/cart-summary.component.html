@@ -38,10 +38,17 @@
                 >
               </div>
             </td>
+            <td>{{ item.itemAmount.itemPrice }}</td>
+            <td>{{ item.itemAmount.itemTotalPrice }}</td>
           </tr>
           <tr class="shipping">
             <td class="shipping" colspan="4">
-              <app-shipping></app-shipping>
+              <app-shipping
+                [deliverOptions]="dropDownOptionsAvailable"
+                [selectedValue]="item.shippingType"
+                [storeOptions]="item.stores"
+                [storeId]="item.storeId"
+              ></app-shipping>
             </td>
           </tr>
         </tbody>
@@ -50,7 +57,7 @@
   </div>
   <div class="flexbox-item flexbox-item-2">
     <div class="flexbox order-summary">
-      <app-order-summary></app-order-summary>
+      <app-order-summary [cartSummary]="cartSummary"></app-order-summary>
     </div>
   </div>
 </div>

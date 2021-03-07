@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ItemQuantityComponent } from './common/widgets/item-quantity/item-quantity.component';
 import { HeaderComponent } from './common/header/header.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiService } from './services/api.service';
 import { SharedService } from './services/shared.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
     HttpClientModule,
+    NgbModule,
   ],
   providers: [SharedService, ApiService],
   bootstrap: [AppComponent],
