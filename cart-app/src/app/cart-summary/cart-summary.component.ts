@@ -8,6 +8,7 @@ import { ApiService } from '../services/api.service';
 })
 export class CartSummaryComponent implements OnInit {
   cartDetails: any;
+  cartDetailsOriginal: any;
   cartSummary: any;
   dropDownOptionsAvailable = [{ shippingType: '', shippingMethod: '' }];
   constructor(private apiService: ApiService) {}
@@ -40,11 +41,15 @@ export class CartSummaryComponent implements OnInit {
     this.apiService.getRequest(url).then((response: any) => {
       console.log(response);
       this.cartDetails = response.cartDetails.cartItems;
+      this.cartDetailsOriginal = JSON.parse(JSON.stringify(this.cartDetails));
       this.cartSummary = response.cartDetails.cartSummary;
       this.prepareDropDownValues(this.cartDetails);
     });
   }
-
+  removeItem(itemId: any) {
+    this.cartDetails = this.cartDetails.filter((i: any) => i.itemId !== itemId);
+    this.updateTotal();
+  }
   increment(item: any, event: any, index: any) {
     event.preventDefault();
 
@@ -82,6 +87,10 @@ export class CartSummaryComponent implements OnInit {
     this.cartSummary.cartTotal = parseFloat(
       subTotal + this.cartSummary.shippingAmount
     ).toFixed(2);
+    if (this.cartDetails.length == 0) {
+      this.cartSummary.shippingAmount = 0;
+      this.cartSummary.cartTotal = 0;
+    }
   }
 
   validate(event: any) {

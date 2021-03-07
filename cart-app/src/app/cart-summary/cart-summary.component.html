@@ -8,6 +8,7 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Total</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody *ngFor="let item of cartDetails; let i = index">
@@ -39,10 +40,19 @@
               </div>
             </td>
             <td>{{ item.itemAmount.itemPrice }}</td>
-            <td>{{ item.itemAmount.itemTotalPrice }}</td>
+            <td>
+              {{ item.itemAmount.itemTotalPrice }}
+            </td>
+            <td>
+              <i
+                (click)="removeItem(item.itemId)"
+                class="fa fa-trash trash"
+                aria-hidden="true"
+              ></i>
+            </td>
           </tr>
           <tr class="shipping">
-            <td class="shipping" colspan="4">
+            <td class="shipping" colspan="5">
               <app-shipping
                 [deliverOptions]="dropDownOptionsAvailable"
                 [selectedValue]="item.shippingType"
